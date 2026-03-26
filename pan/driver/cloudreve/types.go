@@ -2,7 +2,7 @@ package cloudreve
 
 import (
 	"context"
-	"github.com/hefeiyu25/pan-client/pan"
+	"github.com/hefy27/pan-client/pan"
 	"time"
 )
 

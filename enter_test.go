@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hefeiyu25/pan-client/pan"
-	"github.com/hefeiyu25/pan-client/pan/driver/quark"
+	"github.com/hefy27/pan-client/pan"
+	"github.com/hefy27/pan-client/pan/driver/quark"
 )
 
 // ==========================================================
