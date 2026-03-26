@@ -442,7 +442,15 @@ func (q *Quark) UploadFile(req pan.UploadFileReq) (*pan.TransferResult, error) {
 	}
 
 	// part up
-	partSize := min(int64(pre.Metadata.PartSize), q.Properties.ChunkSize)
+	serverPartSize := int64(pre.Metadata.PartSize)
+	partSize := min(serverPartSize, q.Properties.ChunkSize)
+	if serverPartSize < q.Properties.ChunkSize {
+		internal.GetLogger().Warn("server PartSize is smaller than user ChunkSize, using server value",
+			"serverPartSize", serverPartSize, "userChunkSize", q.Properties.ChunkSize, "actualPartSize", partSize)
+	} else {
+		internal.GetLogger().Info("upload chunk size determined",
+			"serverPartSize", serverPartSize, "userChunkSize", q.Properties.ChunkSize, "actualPartSize", partSize)
+	}
 	total := stat.Size()
 	left := total
 	partNumber := 1
@@ -458,7 +466,7 @@ func (q *Quark) UploadFile(req pan.UploadFileReq) (*pan.TransferResult, error) {
 	}
 	pr.SetFileId(fileTaskId)
 	md5s := make([]string, 0)
-	const maxPartRetry = 3
+	const maxPartRetry = 10
 	for left > 0 {
 		savedUploaded := pr.GetUploaded()
 
@@ -469,10 +477,13 @@ func (q *Quark) UploadFile(req pan.UploadFileReq) (*pan.TransferResult, error) {
 				if resetErr := pr.ResetChunk(savedUploaded); resetErr != nil {
 					return result, resetErr
 				}
-				wait := time.Duration(attempt) * time.Second
+				wait := time.Second * time.Duration(1<<(attempt-1)) // 1s, 2s, 4s, 8s, 16s...
+				if wait > 30*time.Second {
+					wait = 30 * time.Second
+				}
 				internal.GetLogger().Warn("chunk upload retry",
 					"file", req.LocalFile, "part", partNumber,
-					"attempt", attempt+1, "wait", wait, "error", lastErr)
+					"attempt", attempt+1, "maxRetry", maxPartRetry, "wait", wait, "error", lastErr)
 				time.Sleep(wait)
 			}
 			start, end := pr.NextChunk()
