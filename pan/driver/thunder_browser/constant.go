@@ -12,8 +12,8 @@ const (
 
 const (
 	SignProvider = "access_end_point_token"
-	APPID       = "22062"
-	APPKey      = "a5d7416858147a4ab99573872ffccef8"
+	APPID        = "22062"
+	APPKey       = "a5d7416858147a4ab99573872ffccef8"
 )
 
 const (

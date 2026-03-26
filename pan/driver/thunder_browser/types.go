@@ -99,7 +99,7 @@ type SignInRequest struct {
 	ClientID     string `json:"client_id"`
 	ClientSecret string `json:"client_secret"`
 	Provider     string `json:"provider"`
-	SigninToken   string `json:"signin_token"`
+	SigninToken  string `json:"signin_token"`
 }
 
 type CoreLoginRequest struct {

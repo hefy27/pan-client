@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hefeiyu25/pan-client/internal"
-	"github.com/hefeiyu25/pan-client/pan"
+	"github.com/hefy27/pan-client/internal"
+	"github.com/hefy27/pan-client/pan"
 	"github.com/imroc/req/v3"
 )
 
@@ -208,7 +208,7 @@ func (tb *ThunderBrowser) loginWithSession(sessionID, username string) (*TokenRe
 		ClientID:     ClientID,
 		ClientSecret: ClientSecret,
 		Provider:     SignProvider,
-		SigninToken:   sessionID,
+		SigninToken:  sessionID,
 	})
 	response, reqErr := r.Post(url)
 	tokenResp, e := funReturnBySuccess(reqErr, response, errorResult, successResult)

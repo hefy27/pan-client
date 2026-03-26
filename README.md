@@ -7,7 +7,7 @@ Go 语言多云盘统一客户端 SDK，支持夸克网盘、迅雷云盘、Clou
 ## 安装
 
 ```bash
-go get github.com/hefeiyu25/pan-client
+go get github.com/hefy27/pan-client
 ```
 
 要求 Go 1.23+
@@ -31,8 +31,8 @@ import (
     "log/slog"
     "os"
 
-    pan "github.com/hefeiyu25/pan-client"
-    "github.com/hefeiyu25/pan-client/pan/driver/quark"
+    pan "github.com/hefy27/pan-client"
+    "github.com/hefy27/pan-client/pan/driver/quark"
 )
 
 func main() {
@@ -64,7 +64,7 @@ func main() {
 }
 ```
 
-注意：上面 `pan.ListReq` 和 `pan.PanObj` 的完整路径是 `github.com/hefeiyu25/pan-client/pan`，为简洁起见示例中使用短名。
+注意：上面 `pan.ListReq` 和 `pan.PanObj` 的完整路径是 `github.com/hefy27/pan-client/pan`，为简洁起见示例中使用短名。
 
 ### 创建其他客户端
 

@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hefeiyu25/pan-client/internal"
-	"github.com/hefeiyu25/pan-client/pan"
+	"github.com/hefy27/pan-client/internal"
+	"github.com/hefy27/pan-client/pan"
 	"github.com/imroc/req/v3"
 )
 

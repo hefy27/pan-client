@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hefeiyu25/pan-client/internal"
+	"github.com/hefy27/pan-client/internal"
 	"github.com/imroc/req/v3"
 )
 
@@ -23,12 +23,12 @@ type DriverConstructor func() Driver
 type DriverType string
 
 const (
-	Cloudreve        DriverType = "cloudreve"
-	Quark            DriverType = "quark"
-	ThunderBrowser   DriverType = "thunder_browser"
-	BaiduNetdisk     DriverType = "baidu_netdisk"
-	AliyundriveOpen  DriverType = "aliyundrive_open"
-	Aliyundrive      DriverType = "aliyundrive"
+	Cloudreve       DriverType = "cloudreve"
+	Quark           DriverType = "quark"
+	ThunderBrowser  DriverType = "thunder_browser"
+	BaiduNetdisk    DriverType = "baidu_netdisk"
+	AliyundriveOpen DriverType = "aliyundrive_open"
+	Aliyundrive     DriverType = "aliyundrive"
 )
 
 type Properties interface {

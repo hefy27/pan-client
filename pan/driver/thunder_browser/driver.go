@@ -8,8 +8,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/google/uuid"
-	"github.com/hefeiyu25/pan-client/internal"
-	"github.com/hefeiyu25/pan-client/pan"
+	"github.com/hefy27/pan-client/internal"
+	"github.com/hefy27/pan-client/pan"
 	"github.com/imroc/req/v3"
 	"io"
 	"net/http"
@@ -416,6 +416,7 @@ func (tb *ThunderBrowser) DownloadPath(req pan.DownloadPathReq) (*pan.TransferRe
 	err := tb.BaseDownloadPath(req, tb.List, tb.DownloadFile)
 	return nil, err
 }
+
 // resolveDownloadLink extracts the best download URL from a Files object.
 // When UseVideoUrl is true, transcoded media links are preferred over the raw download link.
 func (tb *ThunderBrowser) resolveDownloadLink(link *Files, fileName string) (string, error) {
